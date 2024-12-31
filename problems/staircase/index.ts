@@ -3,15 +3,19 @@
 
 // Time complexity: exponential O(2^n)
 // Space complexity: linear O(n)
-const countStaircaseWaysRecursive = (n) => {
+const countStaircaseWaysRecursive = (n, memo = {}) => {
+  if (n in memo) return memo[n];
+
   // base cases
   if (n === 1) return 1;
   if (n === 2) return 2;
 
   // recursive
-  return (
-    countStaircaseWaysRecursive(n - 1) + countStaircaseWaysRecursive(n - 2)
-  );
+  memo[n] =
+    countStaircaseWaysRecursive(n - 1, memo) +
+    countStaircaseWaysRecursive(n - 2, memo);
+
+  return memo[n];
 };
 
 let recursiveAlgorithmStartTime = performance.now();
