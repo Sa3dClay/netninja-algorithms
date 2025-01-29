@@ -18,6 +18,7 @@ console.log(
   performance.now() - naiveFibonacciStartTime
 );
 
+// Dynamic programming
 // Time complexity: linear O(n) - memo
 const memoFibonacci = (num, memo = {}) => {
   if (num in memo) return memo[num];
